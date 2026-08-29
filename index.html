@@ -1,0 +1,438 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Perfect Day ♡</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            color: #5b4654;
+            overflow-x: hidden;
+            background: #fff8f3;
+        }
+
+        /* =========================
+           FIRST PAGE / INTRO
+        ========================== */
+
+        .intro {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPbLAls7nRC_zidCV3ZaFkm1x1qut61fqYUw4MoQIpvPE15ZqwUb8dtUs&s=10");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .intro-container {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .intro h1 {
+            color: rgb(60, 210, 175);
+            font-family: "Trebuchet MS", sans-serif;
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            font-size: 22px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        button {
+            padding: 18px 35px;
+            border: none;
+            border-radius: 30px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .perfect {
+            background: pink;
+            color: #5b4654;
+        }
+
+        .bad {
+            background: white;
+            color: #5b4654;
+        }
+
+        /* Hover over Bad Day */
+        .buttons:has(.bad:hover) .bad {
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        .buttons:has(.bad:hover) .perfect {
+            transform: scale(1.4);
+        }
+
+        /* =========================
+           PERFECT DAY SECTION
+        ========================== */
+
+        #perfect-day {
+            min-height: 100vh;
+            padding-bottom: 80px;
+
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOa3nnlIHEeEwmDBfZ4LlI4gAHiYSOU_ainF-cM4D-6g&s=10");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        #perfect-day h1 {
+            text-align: center;
+            padding: 60px 20px;
+            margin: 0;
+            color: #d47798;
+            font-size: 45px;
+        }
+
+        .timeline {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 7px;
+            height: 100%;
+            background: #f3b6c9;
+            border-radius: 20px;
+            transform: translateX(-50%);
+        }
+
+        .character {
+            position: fixed;
+            left: 50%;
+            top: 20%;
+            transform: translateX(-50%);
+            font-size: 35px;
+            z-index: 10;
+            transition: top 0.2s ease;
+            pointer-events: none;
+        }
+
+        .item {
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .image,
+        .text {
+            width: 42%;
+            opacity: 0;
+            transition: 1s ease;
+        }
+
+        .image {
+            transform: translateX(-120px);
+        }
+
+        .text {
+            transform: translateX(120px);
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(100, 70, 80, 0.1);
+        }
+
+        .item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .item:nth-child(even) .image {
+            transform: translateX(120px);
+        }
+
+        .item:nth-child(even) .text {
+            transform: translateX(-120px);
+        }
+
+        .item.show .image,
+        .item.show .text {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .image img {
+            width: 100%;
+            display: block;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(100, 70, 80, 0.15);
+        }
+
+        .text h2 {
+            color: #d47798;
+            margin-top: 0;
+        }
+
+        .text p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .item::after {
+            content: "♡";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff8f3;
+            color: #d47798;
+            font-size: 25px;
+            padding: 5px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            .intro h1 {
+                font-size: 42px;
+            }
+
+            .intro p {
+                font-size: 18px;
+            }
+
+            .buttons {
+                gap: 15px;
+            }
+
+            button {
+                padding: 15px 22px;
+                font-size: 17px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .character {
+                left: 20px;
+            }
+
+            .item,
+            .item:nth-child(even) {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 50px;
+                gap: 20px;
+                padding-top: 70px;
+                padding-bottom: 70px;
+            }
+
+            .image,
+            .text {
+                width: 90%;
+            }
+
+            .item::after {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         INTRO PAGE
+    ========================== -->
+
+    <section class="intro">
+
+        <div class="intro-container">
+
+            <h1>Want to know about my day?</h1>
+
+            <p>Choose wisely...</p>
+
+            <div class="buttons">
+
+                <!-- Goes to the Perfect Day section -->
+                <a href="#perfect-day">
+                    <button class="perfect">
+                        Perfect Day
+                    </button>
+                </a>
+
+                <button class="bad">
+                    Bad Day
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PERFECT DAY
+    ========================== -->
+
+    <section id="perfect-day">
+
+        <h1>A perfect day in my life ♡</h1>
+
+        <div class="character">🐰</div>
+
+        <div class="timeline">
+
+            <!-- 1 -->
+            <div class="item">
+
+                <div class="image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIbqyWibyblk-dD6Xm51gBJXEPI-LE51hMtpEH5MgB0g&s">
+                </div>
+
+                <div class="text">
+                    <h2>Morning routine</h2>
+                    <p>
+                        Wake up, breathe, watch Shinchan
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- 2 -->
+            <div class="item">
+
+                <div class="image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfwZySJUEZuqUhaQ70mm37-a99LZkPu4Mr9LUDgprtow&s=10">
+                </div>
+
+                <div class="text">
+                    <h2>Breakfast routine</h2>
+                    <p>
+                        Breakfast? I'll have one pastry and zero regrets
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- 3 -->
+            <div class="item">
+
+                <div class="image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPMAOOCHqNcrdQOwku_U48EH4TO65Wj0xewC0cnk47Zg&s=10">
+                </div>
+
+                <div class="text">
+                    <h2>Post breakfast</h2>
+                    <p>
+                        I don't need a reason to dance. I need a song
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- 4 -->
+            <div class="item">
+
+                <div class="image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCQVUSIJmNHKtMYwAIODsUkTWC2S34PXBH8a2gdOgNJg&s=10">
+                </div>
+
+                <div class="text">
+                    <h2>Favorite Activity</h2>
+                    <p>
+                        Folding paper and calling it art
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- 5 -->
+            <div class="item">
+
+                <div class="image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT9xyaqB-3leesE5YZOfGNFRoPVO9q3dUlM9CXx1bfUw&s=10">
+                </div>
+
+                <div class="text">
+                    <h2>Therapy time</h2>
+                    <p>
+                        Friends, beach and zero plans
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        const items = document.querySelectorAll(".item");
+
+        function showItems() {
+
+            items.forEach(item => {
+
+                const position = item.getBoundingClientRect().top;
+
+                if (position < window.innerHeight - 100) {
+                    item.classList.add("show");
+                }
+
+            });
+
+        }
+
+        window.addEventListener("scroll", showItems);
+
+        showItems();
+
+    </script>
+
+</body>
+</html>
+```
