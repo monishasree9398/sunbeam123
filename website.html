@@ -1,0 +1,273 @@
+<<!DOCTYPE html>
+<html>
+<head>
+    <title>My Cute Journey</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            color: #5b4654;
+            overflow-x: hidden;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzIRl1natfsBCsbhQc4pBiJrjVhcG62u0pyAH729PHZtRt0eGSP1go2LTF&s=10");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        
+        h1 {
+            text-align: center;
+            padding: 60px 0;
+            color: #d47798;
+        }
+
+     
+        .timeline {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+        }
+
+       
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 7px;
+            height: 100%;
+            background: #f3b6c9;
+            border-radius: 20px;
+            transform: translateX(-50%);
+        }
+
+       
+        .character {
+            position: fixed;
+            left: 50%;
+            top: 20%;
+            transform: translateX(-50%);
+            font-size: 35px;
+            z-index: 10;
+            transition: top 0.2s ease;
+        }
+
+        
+        .item {
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .image, .text {
+            width: 42%;
+            opacity: 0;
+            transition: 1s ease;
+        }
+
+        .image {
+            transform: translateX(-120px);
+        }
+
+        .text {
+            transform: translateX(120px);
+        }
+
+        
+        .item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .item:nth-child(even) .image {
+            transform: translateX(120px);
+        }
+
+        .item:nth-child(even) .text {
+            transform: translateX(-120px);
+        }
+
+       
+        .item.show .image,
+        .item.show .text {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+       
+        .image img {
+            width: 100%;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(100, 70, 80, 0.15);
+        }
+
+        
+        .text {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(100, 70, 80, 0.1);
+        }
+
+        .text h2 {
+            color: #d47798;
+        }
+
+        
+        .item::after {
+            content: "♡";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff8f3;
+            color: #d47798;
+            font-size: 25px;
+            padding: 5px;
+        }
+
+        @media (max-width: 700px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .character {
+                left: 20px;
+            }
+
+            .item,
+            .item:nth-child(even) {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 50px;
+                gap: 20px;
+                padding-top: 70px;
+                padding-bottom: 70px;
+            }
+
+            .image, .text {
+                width: 90%;
+            }
+
+            .item::after {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>A perfect day in my life ♡</h1>
+
+   
+    <div class="character">🐰</div>
+
+    <div class="timeline">
+
+      
+        <div class="item">
+            <div class="image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIbqyWibyblk-dD6Xm51gBJXEPI-LE51hMtpEH5MgB0g&s">
+            </div>
+
+            <div class="text">
+                <h2>Morning routine</h2>
+                <p>
+                    
+                    Wake up, breathe, watch Shinchan 
+                </p>
+            </div>
+        </div>
+
+       
+        <div class="item">
+            <div class="image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfwZySJUEZuqUhaQ70mm37-a99LZkPu4Mr9LUDgprtow&s=10">
+            </div>
+
+            <div class="text">
+                <h2>Breakfast routine</h2>
+                <p>
+                    Breakfast? I'll have one pastry and zero regrets
+                </p>
+            </div>
+        </div>
+
+        
+        <div class="item">
+            <div class="image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPMAOOCHqNcrdQOwku_U48EH4TO65Wj0xewC0cnk47Zg&s=10">
+            </div>
+
+            <div class="text">
+                <h2>Post breakfast</h2>
+                <p>
+                  I don't need a reason to dance. I need a song
+                </p>
+            </div>
+        </div>
+
+        
+        <div class="item">
+            <div class="image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCQVUSIJmNHKtMYwAIODsUkTWC2S34PXBH8a2gdOgNJg&s=10">
+            </div>
+
+            <div class="text">
+                <h2>Favorite Activity</h2>
+                <p>
+                   Folding paper and calling it art
+                </p>
+            </div>
+        </div>
+         <div class="item">
+            <div class="image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT9xyaqB-3leesE5YZOfGNFRoPVO9q3dUlM9CXx1bfUw&s=10">
+            </div>
+
+            <div class="text">
+                <h2>Therapy time</h2>
+                <p>Friends, beach and zero plans
+                    
+                </p>
+            </div>
+            
+            
+            
+            
+            
+      
+       
+
+           
+
+        
+
+    </div>
+
+    <script>
+        const items = document.querySelectorAll(".item");
+
+        function showItems() {
+            items.forEach(item => {
+                const position = item.getBoundingClientRect().top;
+
+                if (position < window.innerHeight - 100) {
+                    item.classList.add("show");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", showItems);
+        showItems();
+    </script>
+
+</body>
+</html> 
